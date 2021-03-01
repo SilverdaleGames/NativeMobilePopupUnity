@@ -36,7 +36,7 @@ namespace Silverdale
 
         public void init()
         {
-            MobileNative.showDialogConfirm(title, message, yes, no, yesAction = null, noAction = null);
+            MobileNative.showDialogConfirm(title, message, yes, no, yesAction, noAction);
         }
 
         #endregion

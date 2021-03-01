@@ -2,16 +2,6 @@
 
 
 # Code Examples
-public class PopupView : MonoBehaviour
-{
-    public Text txtLog;
-    public void DebugLog(string log)
-    {
-        txtLog.text = log;
-        Debug.Log(log);
-    }
-    
-
     // Dialog Button click event
     public void OnDialogInfo()
     {

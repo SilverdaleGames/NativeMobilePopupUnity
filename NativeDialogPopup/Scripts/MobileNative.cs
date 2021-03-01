@@ -1,4 +1,9 @@
 ﻿
+using System;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace Silverdale
 {
 
@@ -26,6 +31,7 @@ namespace Silverdale
         public static void showDialogNeutral(string title, string message, string accept, string neutral, string decline)
         {
 #if UNITY_EDITOR
+	        EditorUtility.DisplayDialog(title, message, accept, decline);
 #elif UNITY_IPHONE
             _TAG_ShowDialogNeutral(title, message, accept, neutral, decline);
 #elif UNITY_ANDROID
@@ -42,9 +48,12 @@ namespace Silverdale
         /// <param name="yes">Accept Button text</param>
         /// <param name="no">Cancel Button text</param>
         /// <param name="cancelable">Android only. Allows setting the cancelable property of the dialog</param>
-        public static void showDialogConfirm(string title, string message, string yes, string no, bool cancelable = true)
+        public static void showDialogConfirm(string title, string message, string yes, string no, Action yesAction = null, Action noAction = null, bool cancelable = true)
         {
 #if UNITY_EDITOR
+			var result = EditorUtility.DisplayDialog(title, message, yes, no);
+			if (result) yesAction?.Invoke();
+			else noAction?.Invoke();
 #elif UNITY_IPHONE
             _TAG_ShowDialogConfirm(title, message, yes, no);
 #elif UNITY_ANDROID
@@ -56,6 +65,7 @@ namespace Silverdale
         public static void showInfoPopup(string title, string message, string ok)
         {
 #if UNITY_EDITOR
+	        EditorUtility.DisplayDialog(title, message, ok);
 #elif UNITY_IPHONE
             _TAG_ShowDialogInfo(title, message, ok);
 #elif UNITY_ANDROID

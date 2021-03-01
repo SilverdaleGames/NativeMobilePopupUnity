@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System;
 
-namespace pingak9
+namespace Silverdale
 {
     public class MobileDialogInfo : MonoBehaviour
     {

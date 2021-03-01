@@ -1,9 +1,5 @@
 ﻿
-using System;
-using System.Runtime.InteropServices;
-using UnityEngine;
-
-namespace pingak9
+namespace Silverdale
 {
 
     public class MobileNative
@@ -21,7 +17,7 @@ namespace pingak9
 
         [DllImport("__Internal")]
         private static extern void _TAG_DismissCurrentAlert();
-	
+
         [DllImport ("__Internal")]
         private static extern void _TAG_ShowDatePicker(int mode, double unix);
 
@@ -32,7 +28,7 @@ namespace pingak9
 #if UNITY_EDITOR
 #elif UNITY_IPHONE
             _TAG_ShowDialogNeutral(title, message, accept, neutral, decline);
-#elif UNITY_ANDROID            
+#elif UNITY_ANDROID
             AndroidJavaClass javaUnityClass = new AndroidJavaClass("com.pingak9.nativepopup.Bridge");
             javaUnityClass.CallStatic("ShowDialogNeutral", title, message, accept, neutral, decline);
 #endif
@@ -51,7 +47,7 @@ namespace pingak9
 #if UNITY_EDITOR
 #elif UNITY_IPHONE
             _TAG_ShowDialogConfirm(title, message, yes, no);
-#elif UNITY_ANDROID            
+#elif UNITY_ANDROID
             AndroidJavaClass javaUnityClass = new AndroidJavaClass("com.pingak9.nativepopup.Bridge");
             javaUnityClass.CallStatic("ShowDialogConfirm", title, message, yes, no, cancelable);
 #endif
@@ -62,7 +58,7 @@ namespace pingak9
 #if UNITY_EDITOR
 #elif UNITY_IPHONE
             _TAG_ShowDialogInfo(title, message, ok);
-#elif UNITY_ANDROID            
+#elif UNITY_ANDROID
             AndroidJavaClass javaUnityClass = new AndroidJavaClass("com.pingak9.nativepopup.Bridge");
             javaUnityClass.CallStatic("ShowDialogInfo", title, message, ok);
 #endif
@@ -84,7 +80,7 @@ namespace pingak9
 #if UNITY_EDITOR
 #elif UNITY_IPHONE
             DateTime dateTime = new DateTime(year, month, day);
-            double unix = (TimeZoneInfo.ConvertTimeToUtc(dateTime) - new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc)).TotalSeconds; 
+            double unix = (TimeZoneInfo.ConvertTimeToUtc(dateTime) - new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc)).TotalSeconds;
             _TAG_ShowDatePicker(2, unix);
 #elif UNITY_ANDROID
             AndroidJavaClass javaUnityClass = new AndroidJavaClass("com.pingak9.nativepopup.Bridge");

@@ -1,8 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
-using System;
+﻿using System;
 
-namespace pingak9
+namespace Silverdale
 {
     public class NativeDialog
     {

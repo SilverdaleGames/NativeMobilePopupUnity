@@ -1,6 +1,6 @@
 {
   "name": "com.silverdale.native-mobile-popup",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "unity": "2020.1",
   "displayName": "Native Mobile Popup",
   "keywords": ["Native", "iOS", "Android", "Popup"],

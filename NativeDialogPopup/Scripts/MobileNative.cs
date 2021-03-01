@@ -1,5 +1,8 @@
 ﻿
 using System;
+#if UNITY_IOS
+using System.Runtime.InteropServices;
+#endif
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -10,7 +13,7 @@ namespace Silverdale
     public class MobileNative
     {
 
-#if UNITY_IPHONE
+#if UNITY_IOS
         [DllImport("__Internal")]
         private static extern void _TAG_ShowDialogNeutral(string title, string message, string accept, string neutral, string decline);
 
@@ -32,7 +35,7 @@ namespace Silverdale
         {
 #if UNITY_EDITOR
 	        EditorUtility.DisplayDialog(title, message, accept, decline);
-#elif UNITY_IPHONE
+#elif UNITY_IOS
             _TAG_ShowDialogNeutral(title, message, accept, neutral, decline);
 #elif UNITY_ANDROID
             AndroidJavaClass javaUnityClass = new AndroidJavaClass("com.pingak9.nativepopup.Bridge");
@@ -54,7 +57,7 @@ namespace Silverdale
 			var result = EditorUtility.DisplayDialog(title, message, yes, no);
 			if (result) yesAction?.Invoke();
 			else noAction?.Invoke();
-#elif UNITY_IPHONE
+#elif UNITY_IOS
             _TAG_ShowDialogConfirm(title, message, yes, no);
 #elif UNITY_ANDROID
             AndroidJavaClass javaUnityClass = new AndroidJavaClass("com.pingak9.nativepopup.Bridge");
@@ -66,7 +69,7 @@ namespace Silverdale
         {
 #if UNITY_EDITOR
 	        EditorUtility.DisplayDialog(title, message, ok);
-#elif UNITY_IPHONE
+#elif UNITY_IOS
             _TAG_ShowDialogInfo(title, message, ok);
 #elif UNITY_ANDROID
             AndroidJavaClass javaUnityClass = new AndroidJavaClass("com.pingak9.nativepopup.Bridge");
@@ -77,7 +80,7 @@ namespace Silverdale
         public static void DismissCurrentAlert()
         {
 #if UNITY_EDITOR
-#elif UNITY_IPHONE
+#elif UNITY_IOS
             _TAG_DismissCurrentAlert();
 #elif UNITY_ANDROID
             AndroidJavaClass javaUnityClass = new AndroidJavaClass("com.pingak9.nativepopup.Bridge");
@@ -88,7 +91,7 @@ namespace Silverdale
         public static void showDatePicker(int year, int month, int day)
         {
 #if UNITY_EDITOR
-#elif UNITY_IPHONE
+#elif UNITY_IOS
             DateTime dateTime = new DateTime(year, month, day);
             double unix = (TimeZoneInfo.ConvertTimeToUtc(dateTime) - new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc)).TotalSeconds;
             _TAG_ShowDatePicker(2, unix);
@@ -100,7 +103,7 @@ namespace Silverdale
         public static void showTimePicker()
         {
 #if UNITY_EDITOR
-#elif UNITY_IPHONE
+#elif UNITY_IOS
             _TAG_ShowDatePicker(1, 0);
 #elif UNITY_ANDROID
             AndroidJavaClass javaUnityClass = new AndroidJavaClass("com.pingak9.nativepopup.Bridge");

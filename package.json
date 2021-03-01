@@ -5,4 +5,8 @@
   "displayName": "Native Mobile Popup",
   "keywords": ["Native", "iOS", "Android", "Popup"],
   "description": "Native popup for iOS and Android"
+  "author": {
+    "name": "Silverdale",
+    "url": "https://github.com/Dasparion"
+  },
 }

@@ -1,10 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
-using pingak9;
-using UnityEngine.UI;
-using System;
-using System.Globalization;
+# Native Mobile Popup Unity
 
+
+# Code Examples
 public class PopupView : MonoBehaviour
 {
     public Text txtLog;

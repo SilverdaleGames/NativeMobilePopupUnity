@@ -48,8 +48,6 @@ namespace pingak9
         //--------------------------------------
         // Events
         //--------------------------------------
-
-        string formatDate = "yyyy-MM-dd HH:mm:ss";
         /// <summary>
         /// Note avalible in android
         /// </summary>
@@ -57,7 +55,6 @@ namespace pingak9
         public void DateChangedEvent(string time)
         {
             DateTime dt = DateTime.Parse(time);
-            //DateTime dt = DateTime.ParseExact(time, formatDate, CultureInfo.InvariantCulture);
             if (OnDateChanged!= null)
                 OnDateChanged(dt);
         }
@@ -65,7 +62,6 @@ namespace pingak9
         public void PickerClosedEvent(string time)
         {
             DateTime dt = DateTime.Parse(time);
-            //DateTime dt = DateTime.ParseExact(time, formatDate, CultureInfo.InvariantCulture);
             if (OnPickerClosed != null)
                 OnPickerClosed(dt);
         }

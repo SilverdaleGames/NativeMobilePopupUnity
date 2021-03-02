@@ -1,5 +1,5 @@
-﻿
-using System;
+﻿using System;
+using UnityEngine;
 #if UNITY_IOS
 using System.Runtime.InteropServices;
 #endif
@@ -9,8 +9,7 @@ using UnityEditor;
 
 namespace Silverdale
 {
-
-    public class MobileNative
+	public class MobileNative
     {
 
 #if UNITY_IOS

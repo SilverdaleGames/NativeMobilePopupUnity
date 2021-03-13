@@ -56,11 +56,12 @@ namespace Silverdale
 			var result = EditorUtility.DisplayDialog(title, message, yes, no);
 			if (result) yesAction?.Invoke();
 			else noAction?.Invoke();
+
 #elif UNITY_IOS
             _TAG_ShowDialogConfirm(title, message, yes, no);
 #elif UNITY_ANDROID
-            AndroidJavaClass javaUnityClass = new AndroidJavaClass("com.pingak9.nativepopup.Bridge");
-            javaUnityClass.CallStatic("ShowDialogConfirm", title, message, yes, no);
+           AndroidJavaClass javaUnityClass = new AndroidJavaClass("com.pingak9.nativepopup.Bridge");
+			javaUnityClass.CallStatic("ShowDialogConfirm", title, message, yes, no, (Boolean) false);
 #endif
         }
 

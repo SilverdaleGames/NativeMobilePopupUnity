@@ -60,8 +60,8 @@ namespace Silverdale
 #elif UNITY_IOS
             _TAG_ShowDialogConfirm(title, message, yes, no);
 #elif UNITY_ANDROID
-           AndroidJavaClass javaUnityClass = new AndroidJavaClass("com.pingak9.nativepopup.Bridge");
-			javaUnityClass.CallStatic("ShowDialogConfirm", title, message, yes, no, (Boolean) false);
+           AndroidJavaClass javaUnityClass = new AndroidJavaClass("com.tag.nativepopup.PopupManager");
+			javaUnityClass.CallStatic("ShowDialogPopup", title, message, yes, no);
 #endif
         }
 

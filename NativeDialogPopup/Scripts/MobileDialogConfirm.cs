@@ -23,8 +23,12 @@ namespace Silverdale
         public static MobileDialogConfirm Create(string title, string message, string yes, string no, Action yesAction, Action noAction)
         {
             MobileDialogConfirm dialog;
-            dialog = new GameObject("MobileDialogConfirm").AddComponent<MobileDialogConfirm>();
-            dialog.title = title;
+#if UNITY_ANDROID
+	        dialog = new GameObject("AndroidDialogPopup").AddComponent<MobileDialogConfirm>();
+#else
+	        dialog = new GameObject("MobileDialogConfirm").AddComponent<MobileDialogConfirm>();
+#endif
+	        dialog.title = title;
             dialog.message = message;
             dialog.yes = yes;
             dialog.no = no;
@@ -42,6 +46,22 @@ namespace Silverdale
         #endregion
 
         #region IOS_EVENT_LISTENER
+
+        public void OnDialogPopUpCallBack(string buttonIndex)
+        {
+	        int index = Convert.ToInt16(buttonIndex);
+
+	        switch (index)
+	        {
+		        case 0:
+			        OnYesCallBack("1");
+			        break;
+		        case 1:
+			        OnNoCallBack("0");
+			        break;
+	        }
+	        Destroy(gameObject);
+        }
 
         public void OnYesCallBack(string message)
         {

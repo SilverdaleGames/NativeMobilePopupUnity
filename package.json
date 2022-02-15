@@ -1,12 +1,14 @@
 {
   "name": "com.silverdale.native-mobile-popup",
-  "version": "1.1.9",
+  "version": "1.2.0",
   "unity": "2020.1",
   "displayName": "Native Mobile Popup",
   "keywords": ["Native", "iOS", "Android", "Popup"],
   "description": "Native popup for iOS and Android",
   "author": {
     "name": "Silverdale",
-    "url": "https://github.com/Dasparion"
-  }
+    "url": "https://github.com/SilverdaleGames/NativeMobilePopupUnity.git"
+  },
+  "documentationUrl":"https://github.com/SilverdaleGames/NativeMobilePopupUnity.git",
+  "changelogUrl":"https://github.com/SilverdaleGames/NativeMobilePopupUnity/releases"
 }

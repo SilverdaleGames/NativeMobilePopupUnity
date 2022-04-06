@@ -65,10 +65,11 @@ namespace Silverdale
 #endif
         }
 
-        public static void showInfoPopup(string title, string message, string ok)
+        public static void showInfoPopup(string title, string message, string ok, Action yesAction = null)
         {
 #if UNITY_EDITOR
-	        EditorUtility.DisplayDialog(title, message, ok);
+	        var result = EditorUtility.DisplayDialog(title, message, ok);
+	        if (result) yesAction?.Invoke();
 #elif UNITY_IOS
             _TAG_ShowDialogInfo(title, message, ok);
 #elif UNITY_ANDROID

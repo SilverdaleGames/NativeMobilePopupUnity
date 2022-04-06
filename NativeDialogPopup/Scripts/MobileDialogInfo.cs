@@ -32,7 +32,7 @@ namespace Silverdale
 
         public void init()
         {
-            MobileNative.showInfoPopup(title, message, ok);
+            MobileNative.showInfoPopup(title, message, ok, okAction);
         }
 
         #endregion

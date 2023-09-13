@@ -45,8 +45,6 @@ namespace Silverdale
 
         #endregion
 
-        #region IOS_EVENT_LISTENER
-
         public void OnDialogPopUpCallBack(string buttonIndex)
         {
 	        int index = Convert.ToInt16(buttonIndex);
@@ -62,7 +60,8 @@ namespace Silverdale
 	        }
 	        Destroy(gameObject);
         }
-
+        
+        #region IOS_EVENT_LISTENER
         public void OnYesCallBack(string message)
         {
             if (yesAction != null)

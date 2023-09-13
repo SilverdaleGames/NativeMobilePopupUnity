@@ -42,7 +42,7 @@ namespace Silverdale
 
         #endregion
 
-        public void OnDialogPopUpCallBack(string buttonIndex)
+        public void OnMessagePopUpCallBack(string buttonIndex)
         {
             int index = Convert.ToInt16(buttonIndex);
 

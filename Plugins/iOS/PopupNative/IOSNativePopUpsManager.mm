@@ -9,17 +9,16 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *yesAction = [UIAlertAction actionWithTitle:b1 style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [IOSNativePopUpsManager unregisterAllertView];
         UnitySendMessage("MobileDialogConfirm", "OnYesCallBack",  [DataConvertor NSIntToChar:0]);
     }];
     
     UIAlertAction *noAction = [UIAlertAction actionWithTitle:b2 style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [IOSNativePopUpsManager unregisterAllertView];
         UnitySendMessage("MobileDialogConfirm", "OnNoCallBack",  [DataConvertor NSIntToChar:1]);
     }];
     
     [alertController addAction:yesAction];
     [alertController addAction:noAction];
+    
     
     [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alertController animated:YES completion:nil];
 }
@@ -29,7 +28,6 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:b1 style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [IOSNativePopUpsManager unregisterAllertView];
         UnitySendMessage("MobileDialogInfo", "OnOkCallBack",  [DataConvertor NSIntToChar:0]);
     }];
     [alertController addAction:okAction];

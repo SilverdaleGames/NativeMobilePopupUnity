@@ -4,14 +4,6 @@
 
 @implementation IOSNativePopUpsManager
 
-static UIAlertController* _currentAllert =  nil;
-
-+ (void) unregisterAllertView {
-    if(_currentAllert != nil) {
-        _currentAllert = nil;
-    }
-}
-
 + (void) ShowDialogConfirm: (NSString *) title message: (NSString*) msg yesTitle:(NSString*) b1 noTitle: (NSString*) b2{
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
@@ -29,9 +21,7 @@ static UIAlertController* _currentAllert =  nil;
     [alertController addAction:yesAction];
     [alertController addAction:noAction];
     
-    
     [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alertController animated:YES completion:nil];
-    _currentAllert = alertController;
 }
 
 +(void)ShowDialogInfo: (NSString *) title message: (NSString*) msg okTitle:(NSString*) b1 {
@@ -44,13 +34,12 @@ static UIAlertController* _currentAllert =  nil;
     }];
     [alertController addAction:okAction];
     
-    
     [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alertController animated:YES completion:nil];
-    _currentAllert = alertController;
 }
 
 extern "C" {
     // Unity Call
+    
     void _TAG_ShowDialogConfirm(char* title, char* message, char* yes, char* no) {
         [IOSNativePopUpsManager ShowDialogConfirm:[DataConvertor charToNSString:title] message:[DataConvertor charToNSString:message] yesTitle:[DataConvertor charToNSString:yes] noTitle:[DataConvertor charToNSString:no]];
     }
